@@ -1,0 +1,90 @@
+REGULAR EXPRESSIONS NOTES
+Regular Expressions were introduces in 1.4 version of Java .
+Mostly Pattern and Matcher classes are used and they come from java.util.regex package
+Regular Expression is basically a group of objects according to a particular pattern
+
+Examples where RegEx is used:
+Inquiry form:
+Name: Omonjon
+Mobile Number: 487564854
+Mail ID: dfh@gmail.com
+Course: Java
+
+Submit
+
+NOTE:  By using the class name, if we are calling method that returns the same Class object - such methods are called Static Factory Methods
+
+Important Methods of Matcher class:
+	1. Find()  -> boolean method that attempts to find the next match, if the match or pattern is available it returns true
+	2. Start() -> returns the starting index of the match
+	3. End()  -> returns the ending index of the match + 1. always return + 1
+	4. Group()  ->  returns the matched item as a string., which thing got matched
+
+Character Classes:
+	1. [ abc ]   -> either a, b or c
+	2. [ ^abc ]   -> except a, b or c, any symbol
+	3. [ a-z ]   -> any lower case alphabet symbols
+	4. [ A-B ]   ->  any upper case alphabet symbol
+	5. [a-zA-B ]  -> any alphabet symbol
+	6. [  0-9 ]   -> any digit from 0 to 9
+	7. [ a-zA-Z0-9 ]  ->  any alpha numeric character
+	8. [  ^a-zA-Z0-9 ]  -> special symbols like $ % & * # !
+
+Pre-Defined Character Classes
+
+	1. \s    space character
+	2. \S    except space character, any character
+	3. \d    any digit from 0 to 9
+	4. \D    anything character except digit from 0-9
+	5. \w    any word character, any alphanumeric [a-zA-z0-9
+	6. \W    except word character, any special characters like $ % &
+	7. .     Dot means any character
+
+Quantifiers:
+Used to specify the number of occurrences to match in the target String
+
+a    =   only single character
+a+   =   at least one or more
+a*   =   any number of a including zero number also. When the string ends, there is one more occurrence of zero number of a. Always remember that in reg ex the ending index is +1, so cursor moves n+1
+a?   =   at most one a only. Either one a or 0 a.
+
+Suppose we have target string abbaabbaaa
+If you want to search one or more 'a's, we can use a+
+Which would fetch 3 occurrences only
+
+//Write10-digitmobilenumberwithregEx
+/*Rules:
+*1.Eachnumbershouldcontainexactly10digits
+*2.Firstdigitshouldbe7/8or9
+**/
+
+String regEx="[7-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]";
+String regEx2="[7-9][0-9]{9}";
+String regEx3="[789][0-9]{9}";
+
+//2.Mobile number must be either 10 or 11 digits
+//if it is 11 digits, the first digit shouldbe 0
+String regEx4="0?[7-9][0-9]{9}";
+
+//3.Mobile number should be either 10-11-12 digit
+//if 12 digits, the first 2 digits 91
+String regEx5="(0|91)?[7-9][0-9]{9}";
+
+/*=======To represent all mail IDs ========*/
+//durga_ocjp.123@gmail.com
+String regExMail="[a-zA-Z0-9][a-zA-Z0-9_.]*@[a-zA-Z-0-9]+[.]([a-zA-Z]+)+";
+
+//if the requirement is to take gmail only
+String regExMail2="[a-zA-Z0-9][a-zA-Z0-9_.]*@gmail[.]com";
+
+//Regular expression to represent all Yava language identifiers
+String regExYava="[a-k][0369][a-zA-Z0-9#$]*";
+
+//To represent all names starting with A/a
+String regExNames="[aA][a-zA-Z]*";
+
+//To represent all names ending with L/l
+String regExEndingL="[a-zA-Z]*[lL]";
+
+//To represent all names starting with 'a/A' and ends with 'L/l';
+String regExStaringAendingL="[a-Z][a-zA-Z]*[lL]";
